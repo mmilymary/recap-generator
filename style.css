@@ -61,13 +61,13 @@ body {
   .preview canvas {
     width: auto;
     max-width: 100%;
-    max-height: 38vh;   /* noin kolmasosa ruudusta */
+    max-height: 30vh;   /* noin kolmasosa ruudusta, myös näppäimistön kanssa */
     margin: 0 auto;
   }
   .preview .btn-primary { margin-top: 8px; min-height: 40px; padding: 6px 14px; }
   .preview .hint:empty { display: none; }
   /* Kun kenttää kirjoitetaan, selain vierittää sen esikatselun alapuolelle */
-  input, textarea, select { scroll-margin-top: calc(38vh + 90px); }
+  input, textarea, select { scroll-margin-top: calc(30vh + 90px); }
 }
 
 .panel {
