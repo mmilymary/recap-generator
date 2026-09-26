@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>recap-generator</title>
+  <meta name="description" content="Make weekly study recap cards for Instagram in a terminal style.">
+  <!-- Fontti: JetBrains Mono Google Fontsista -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Space+Mono&family=VT323&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <p class="prompt">&gt; ./recap-generator</p>
+    <p class="tagline">// weekly study recaps, rendered in candlelight</p>
+  </header>
+
+  <main class="layout">
+    <!-- VASEN: lomake -->
+    <form id="recap-form" class="panel" autocomplete="off">
+      <fieldset>
+        <legend>// META</legend>
+        <label for="week">Week number</label>
+        <input id="week" name="week" type="number" min="1" max="53" value="39">
+
+        <label for="status">git status</label>
+        <input id="status" name="status" type="text" value="active_student">
+
+        <label for="font">Font</label>
+        <select id="font" name="font">
+          <option value="courier">Courier Prime – typewriter</option>
+          <option value="vt323">VT323 – old CRT terminal</option>
+          <option value="space">Space Mono – 70s retro</option>
+          <option value="jetbrains">JetBrains Mono – modern code</option>
+        </select>
+      </fieldset>
+
+      <fieldset>
+        <legend>// TOPICS COVERED</legend>
+        <p class="hint">Tag in the left box, text in the right one.</p>
+        <ul id="topics" class="topics"></ul>
+        <button type="button" id="add-topic" class="btn btn-ghost">+ add topic</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>// WEEKLY HIGHLIGHT</legend>
+        <label for="highlight" class="visually-hidden">Weekly highlight</label>
+        <textarea id="highlight" name="highlight" rows="3"></textarea>
+      </fieldset>
+
+      <fieldset>
+        <legend>// NEXT UP</legend>
+        <label for="next" class="visually-hidden">Next up</label>
+        <input id="next" name="next" type="text">
+      </fieldset>
+
+      <fieldset>
+        <legend>// BACKGROUND</legend>
+        <label for="bg">Background photo</label>
+        <input id="bg" name="bg" type="file" accept="image/*">
+
+        <label for="dim">Darken photo: <output id="dim-value">20</output> %</label>
+        <input id="dim" name="dim" type="range" min="0" max="80" value="20">
+
+        <button type="button" id="clear-bg" class="btn btn-ghost">remove photo</button>
+      </fieldset>
+    </form>
+
+    <!-- OIKEA: esikatselu ja lataus -->
+    <section class="panel preview" aria-label="Preview">
+      <canvas id="canvas" width="1080" height="1440" role="img" aria-label="Preview of the recap card"></canvas>
+      <button type="button" id="download" class="btn btn-primary">&gt; download PNG</button>
+      <p id="fit-note" class="hint" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>built by <a href="https://instagram.com/mmilymary">@mmilymary</a> · <a href="https://github.com/mmilymary/recap-generator">source</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

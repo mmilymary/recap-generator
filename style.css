@@ -1,0 +1,130 @@
+/* ===== Värit yhdessä paikassa (CSS-muuttujat) ===== */
+:root {
+  --bg: #141112;          /* lähes musta, lämmin */
+  --panel: #1f1a1b;       /* paneelin tausta */
+  --line: #3a2e30;        /* reunaviivat */
+  --text: #eee6e2;        /* vaalea teksti */
+  --muted: #a8968f;       /* himmeä teksti */
+  --accent: #b5475a;      /* burgundy/ruusu */
+  --accent-hover: #c95a6d;
+  --terminal: #7fb2ff;    /* terminaalin sininen */
+  --radius: 12px;
+  --mono: "Courier Prime", "Courier New", ui-monospace, monospace;
+  --retro: "VT323", "Courier Prime", monospace;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* ===== Yläosa ===== */
+.site-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 8px;
+}
+.prompt { font-family: var(--retro); font-size: 2.2rem; margin: 0; color: var(--terminal); }
+.tagline { margin: 4px 0 0; color: var(--muted); }
+
+/* ===== Kaksi saraketta isolla näytöllä, allekkain puhelimella ===== */
+.layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 900px) {
+  .layout { grid-template-columns: 1fr 1fr; align-items: start; }
+  .preview { position: sticky; top: 16px; }
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+}
+
+/* ===== Lomake ===== */
+fieldset {
+  border: 0;
+  border-top: 1px solid var(--line);
+  margin: 0 0 16px;
+  padding: 12px 0 0;
+}
+fieldset:first-child { border-top: 0; padding-top: 0; }
+legend { color: var(--accent); font-weight: 700; padding: 0; margin-bottom: 8px; }
+
+label { display: block; margin: 8px 0 4px; color: var(--muted); }
+
+input[type="text"],
+input[type="number"],
+select,
+textarea {
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  font: inherit;
+}
+textarea { resize: vertical; }
+input:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 2px solid var(--terminal);
+  outline-offset: 2px;
+}
+input[type="range"] { width: 100%; accent-color: var(--accent); }
+input[type="file"] { color: var(--muted); max-width: 100%; }
+
+.hint { color: var(--muted); font-size: 0.85rem; margin: 0 0 8px; }
+
+/* Aiherivit: tagi | teksti | poista */
+.topics { list-style: none; margin: 0 0 8px; padding: 0; display: grid; gap: 8px; }
+.topic-row { display: grid; grid-template-columns: 9.5em 1fr auto; gap: 8px; }
+@media (max-width: 480px) {
+  .topic-row { grid-template-columns: 1fr auto; }
+  .topic-row .topic-text { grid-column: 1 / -1; grid-row: 2; }
+}
+
+/* ===== Napit ===== */
+.btn {
+  font: inherit;
+  border-radius: 8px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border: 1px solid var(--line);
+  min-height: 44px; /* riittävän iso sormelle */
+}
+.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); width: 100%; margin-top: 12px; font-weight: 700; }
+.btn-primary:hover { background: var(--accent-hover); }
+.btn-ghost { background: transparent; color: var(--text); }
+.btn-ghost:hover { border-color: var(--muted); }
+.btn-remove { background: transparent; color: var(--muted); border: 1px solid var(--line); width: 44px; }
+
+/* ===== Esikatselu ===== */
+canvas {
+  display: block;
+  width: 100%;       /* kuva on oikeasti 1080×1440, näytetään pienempänä */
+  height: auto;
+  border-radius: 8px;
+  background: #000;
+}
+
+.site-footer { max-width: 1200px; margin: 0 auto; padding: 8px 16px 32px; color: var(--muted); }
+.site-footer a { color: var(--terminal); }
+
+/* Näkymätön teksti ruudunlukijoille */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
