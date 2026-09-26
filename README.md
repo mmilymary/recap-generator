@@ -29,6 +29,6 @@ Plain HTML, CSS and JavaScript · `<canvas>` · Google Fonts · GitHub Pages
 ## Roadmap
 - [ ] Story size 1080 × 1920
 - [ ] Color themes
-- [ ] Preview first on mobile
+- [x] Preview stays on top on mobile
 
 Built by [@mmilymary](https://instagram.com/mmilymary) as a learning side quest.

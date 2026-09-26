@@ -47,6 +47,29 @@ body {
   .preview { position: sticky; top: 16px; }
 }
 
+/* Puhelimella esikatselu ensin ja kiinni ruudun yläreunassa,
+   jotta kortti näkyy koko ajan kirjoittaessa */
+@media (max-width: 899px) {
+  .preview {
+    order: -1;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+  }
+  .preview canvas {
+    width: auto;
+    max-width: 100%;
+    max-height: 38vh;   /* noin kolmasosa ruudusta */
+    margin: 0 auto;
+  }
+  .preview .btn-primary { margin-top: 8px; min-height: 40px; padding: 6px 14px; }
+  .preview .hint:empty { display: none; }
+  /* Kun kenttää kirjoitetaan, selain vierittää sen esikatselun alapuolelle */
+  input, textarea, select { scroll-margin-top: calc(38vh + 90px); }
+}
+
 .panel {
   background: var(--panel);
   border: 1px solid var(--line);
